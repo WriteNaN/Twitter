@@ -38,7 +38,7 @@ Here's a simple example to get you started with tweeting using the Twitter Autom
 const Twitter = require("./index.js");
 
 (async () => {
-  const twitter = new Twitter('./cookies.json');
+  const twitter = new Twitter('./cookies.json'); // use twitter.sleep(1000) after constructor if required
   await twitter.tweet({
     content: "Hello World!",
   });
