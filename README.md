@@ -35,6 +35,8 @@ Here's a simple example to get you started with tweeting using the Twitter Autom
 
 
 ```js
+const Twitter = require("./index.js");
+
 (async () => {
   const twitter = new Twitter('./cookies.json');
   await twitter.tweet({
@@ -43,3 +45,28 @@ Here's a simple example to get you started with tweeting using the Twitter Autom
   await twitter.close();
 })();
 ```
+![image](https://github.com/WriteNaN/Twitter/assets/151211283/58da8fa6-53fd-44a3-b1fc-bf521e2ed534)
+
+
+### Attaching files with the tweet
+```js
+await twitter.tweet({
+    content: "Hello World!",
+    media: "path to file"
+});
+```
+![image](https://github.com/WriteNaN/Twitter/assets/151211283/1c2539e0-c166-4c67-9da3-3adf8bd43752)
+
+### creating polls
+```js
+await twitter.tweet({
+    content: "I use crypto since its", // Question
+    poll: {
+      choices: ['Anonymous', 'Permissionless', 'Instant', 'Verifyable'],
+      duration: {days: 2, hours: 1, minutes: 1},
+    }
+});
+```
+![image](https://github.com/WriteNaN/Twitter/assets/151211283/a9a93123-8466-4747-b04f-a52461ef5bc9)
+
+
