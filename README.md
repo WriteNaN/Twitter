@@ -33,17 +33,31 @@ Place the exported cookies.json file in the same directory as your Twitter autom
 
 Here's a simple example to get you started with tweeting using the Twitter Automation API:
 
-
 ```js
-const Twitter = require("./index.js");
+const path = require("path");
+const { Client } = require("./index");
 
-(async () => {
-  const twitter = new Twitter('./cookies.json'); // use twitter.sleep(1000) after constructor if required
-  await twitter.tweet({
-    content: "Hello World!",
-  });
-  await twitter.close();
-})();
+const twitterClient = new Client('./cookies.json', {
+  timeout: 1000,
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.1425.130 Safari/537.36'
+});
+
+twitterClient.on('ready', (isReady) => {
+  if (isReady) {
+    console.log('Twitter client is ready');
+    // Example usage
+    (async () => {
+      const user = await twitterClient.fetchProfile('twitter_handle');
+      console.log('User details:', user);
+      await twitterClient.tweet({
+        content: "Hello World!",
+      });
+      await twitterClient.close();
+    })();
+  } else {
+    console.log('Twitter client failed to initialize');
+  }
+});
 ```
 ![image](https://github.com/WriteNaN/Twitter/assets/151211283/58da8fa6-53fd-44a3-b1fc-bf521e2ed534)
 
