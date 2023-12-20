@@ -1,3 +1,6 @@
+### 🚨 THIS REPOSITORY IS NO LONGER MAINTAINED 🚨
+i will no longer be giving updates on this project, consider using the [official api](https://www.npmjs.com/package/twitter-api-v2) instead. 
+
 # Twitter API Automation Guide
 
 ## Introduction
